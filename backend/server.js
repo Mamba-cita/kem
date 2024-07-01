@@ -25,14 +25,15 @@ app.use(cookieParser());
 app.use('/api/users', userRoutes);
 
 
-if(process.env.NODE_ENV === 'production'){
-    const __dirname = path.resolve();
-    app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
-    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')));
+// if(process.env.NODE_ENV === 'production'){
+//     const __dirname = path.resolve();
+//     app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+//     app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')));
     
-} else {
-    app.get('/', (req, res) => res.send('Server is running in development mode'));
-}
+// } else {
+//     app.get('/', (req, res) => res.send('Server is running in development mode'));
+// }
+app.get('/', (req, res) => res.send('Server is running in development mode'));
 
 // Middleware for handling 404 errors
 app.use(notFound);
