@@ -1,4 +1,5 @@
 import path from 'path';
+import cors from 'cors';
 import express from "express";
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -14,6 +15,12 @@ import userRoutes from './routes/userRoutes.js';
 connectDB();
 
 const app = express();
+
+app.use(cors({
+    origin: 'https://t-truck.vercel.app',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
