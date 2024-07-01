@@ -16,11 +16,15 @@ connectDB();
 
 const app = express();
 
-app.use(cors({
-    origin: 'https://t-truck.vercel.app',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  }));
+
+const corsOptions = {
+  origin: 'https://truck-beige.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
